@@ -4,6 +4,12 @@ class Resposta:
     def __init__(self, acao):
         self._acao = acao
     
-    #Método ainda nao implementado
+    """
+    Ativa a ação de acordo com a perceção
+    recebida e retorna uma ação. Se a perceção
+    for diferente de None, a ação é ativada
+    """
     def ativar(self, percecao, intensidade = 0):
-        raise NotImplementedError("Subclass must implement abstract method, Retorna acao")
+        if percecao is not None:
+            self._acao.prioridade = intensidade
+            return self._acao

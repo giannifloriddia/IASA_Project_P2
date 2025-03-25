@@ -26,6 +26,11 @@ class ComportComp(ABC, Comportamento):
         if acoes:
             return self.selecionar_acao(acoes)
 
+    """
+    Um comportamento composto é composto por várias ações, e os
+    métodos de selecionar essa ação são implementados diferentemente
+    pelas classes que herdam de ComportComp.
+    """
     @abstractmethod
     def selecionar_acao(self, acoes):
         """Seleciona uma acao a partir de uma lista de acoes."""
