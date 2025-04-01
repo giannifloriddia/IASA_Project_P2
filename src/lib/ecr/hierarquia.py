@@ -6,5 +6,5 @@ os primeiros da lista são os mais prioritarios
 ou seja retornar a que estiver no index 0
 """
 class Hierarquia(ComportComp):
-    def selecionar_acao(acoes):
+    def selecionar_acao(self, acoes):
         return acoes[0]

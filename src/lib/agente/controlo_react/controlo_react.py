@@ -1,6 +1,6 @@
 """
 Implementa o processamento interno
-do agentee que relaciona a percecao com a acao.
+do agente que relaciona a percecao com a acao.
 Implementa a "inteligencia do agente"
 """
 class ControloReact:
