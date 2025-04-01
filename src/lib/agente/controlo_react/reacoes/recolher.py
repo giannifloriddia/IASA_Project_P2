@@ -8,4 +8,4 @@ from .evitar.evitarObst import EvitarObst
 
 class Recolher(Hierarquia):
     def __init__(self):
-        super().__init__([EvitarObst(), AproximarAlvo(), Explorar()])
+        super().__init__([EvitarObst(), AproximarAlvo(), ExplorarComMemoria(), Explorar()])

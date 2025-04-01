@@ -1,5 +1,5 @@
 from ecr.reacao import Reacao
-from ..estimuloAlvo import EstimuloAlvo
+from .estimuloAlvo import EstimuloAlvo
 from ..resposta.respostaMover import RespostaMover
 
 class AproximarDir(Reacao):

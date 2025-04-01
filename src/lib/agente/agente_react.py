@@ -24,6 +24,5 @@ class AgenteReact(Agente):
     """
     def executar(self):
         percecao = self._percepcionar()
-        direcao = self.__controlo.processar(percecao)
-        acao = Accao(direcao)
+        acao = self.__controlo.processar(percecao)
         self._actuar(acao)

@@ -1,5 +1,5 @@
 from ecr.hierarquia import Hierarquia
-from sae.ambiente.direccao import Direccao
+from sae import Direccao
 from .evitarDir import EvitarDir
 
 class EvitarObst(Hierarquia):
