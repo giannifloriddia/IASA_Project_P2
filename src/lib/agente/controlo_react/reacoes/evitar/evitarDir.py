@@ -4,4 +4,4 @@ from .respostaEvitar import RespostaEvitar
 
 class EvitarDir(Reacao):
     def __init__(self, direcao):
-        super().__init__(EstimuloObst(direcao), RespostaEvitar(direcao.rodar())) #direcao.rodar() ?????
+        super().__init__(EstimuloObst(direcao), RespostaEvitar(direcao))

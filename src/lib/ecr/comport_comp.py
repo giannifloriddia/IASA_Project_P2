@@ -23,7 +23,7 @@ class ComportComp(Comportamento, ABC):
             acao = comportamento.ativar(percecao)
             if acao:
                 acoes.append(acao)
-        if len(acoes):
+        if acoes:
             return self.selecionar_acao(acoes)
         
     """
