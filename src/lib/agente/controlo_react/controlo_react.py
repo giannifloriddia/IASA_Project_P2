@@ -15,3 +15,4 @@ class ControloReact:
     """
     def processar(self, percecao):
         return self.__comportamento.ativar(percecao)
+    #TEM DE RETORNAR CLASSE ACCAO E NAO DIRECCAO

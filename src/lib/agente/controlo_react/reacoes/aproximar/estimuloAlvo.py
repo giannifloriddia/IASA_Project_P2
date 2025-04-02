@@ -9,6 +9,7 @@ from ecr.estimulo import Estimulo
 class EstimuloAlvo(Estimulo):
 
     def __init__(self, direcao, gama = 0.9):
+        super().__init__()
         self.__direcao = direcao
         self.__gama = gama
         
