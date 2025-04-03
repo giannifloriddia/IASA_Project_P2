@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
 """
+Define informação activadora de uma reacção.
 Interface Estimulo, usamos uma classe abstrata,
 pois o python não suporta interfaces. Usamos
 assim a biblioteca abc para garantir que todas
-as classes que a implementem tenham o método
-detetar.
+as classes que a implementem tenham o método detetar.
 """
 class Estimulo(ABC):
 

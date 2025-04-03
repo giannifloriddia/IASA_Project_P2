@@ -6,8 +6,9 @@ from sae.agente.accao import Accao
 """
 Classe que implementa um agente reativo simples
 tem como atributos um controlo reativo,
-neste caso foi usado somentente o comportamento de explorar
-para efeitos de teste. 
+Foi utilizado o comportamento Recolher.
+
+Um agente reactivo é composto por conjuntos de reações.
 """
 class AgenteReact(Agente):
     def __init__(self):
@@ -16,8 +17,8 @@ class AgenteReact(Agente):
 
     """
     Método igual ao método implementado em Java,
-    chama os metodos percepcionar, processar e atuar
-    e que não devolve nada. Este metodo chama o metodo percepcionar,
+    chama os metodos percepcionar, processar e atuar. 
+    Este metodo chama o metodo percepcionar,
     que retorna uma percepção, chama o metodo processar do controlo, 
     que recebe a percepção e devolve uma ação,
     e chama o metodo atuar, que executa o comando da ação no ambiente.

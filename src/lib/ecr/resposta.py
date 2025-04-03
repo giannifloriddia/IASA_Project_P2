@@ -1,3 +1,7 @@
+"""
+Define uma resposta a estímulos, em termos de 
+ação a realizar e da respectiva prioridade
+"""
 class Resposta:
 
     #Construtor

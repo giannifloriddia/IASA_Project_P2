@@ -1,5 +1,6 @@
 from .comportamento import Comportamento
 
+#Módulo que associa estímulos a respostas, representa uma associação Estímulo - Resposta
 class Reacao(Comportamento):
 
     #Construtor da classe Reacao

@@ -3,7 +3,8 @@ from .aproximarDir import AproximarDir
 from sae.ambiente.direccao import Direccao
 
 """
-Chama AproximarDir para cada direção, usando o construtor da superclasse.
+Chama AproximarDir para cada direção (Norte, Sul, Este e Oeste), 
+usando o construtor da superclasse passando a lista de direções.
 """
 class AproximarAlvo(Prioridade):
     def __init__(self):

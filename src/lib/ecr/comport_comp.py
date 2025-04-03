@@ -5,6 +5,11 @@ e relativos para importar dentro do projeto
 from abc import ABC, abstractmethod
 from .comportamento import Comportamento
 
+"""
+Um comportamento composto agrega conjuntos de comportamentos,
+e requer um mecanismo de selecção de acção para determinar a acção a realizar
+em função das respostas dos vários comportamentos internos
+"""
 class ComportComp(Comportamento, ABC):
 
     def __init__(self, comportamentos):
