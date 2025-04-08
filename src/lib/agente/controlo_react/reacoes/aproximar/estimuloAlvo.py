@@ -19,6 +19,7 @@ class EstimuloAlvo(Estimulo):
     """
     def detetar(self, percecao):
         #elemento, distancia, _ = percecao[self.__direcao]
+        # Vendo a documentação, também pode ser:
         elemento, distancia, _ = percecao.__getitem__(self.__direcao)
         intensidade = self.__gama ** distancia if elemento == Elemento.ALVO else 0
         return intensidade
