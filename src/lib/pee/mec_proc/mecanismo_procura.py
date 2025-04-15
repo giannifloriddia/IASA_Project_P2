@@ -13,10 +13,10 @@ class MecanismoProcura(ABC):
         self._fronteira = fronteira
 
     def _iniciar_memoria(self):
-        pass
+        self._fronteira.iniciar()
 
     def _memorizar(self, no):
-        pass
+        self._fronteira.inserir(no)
     
     """
     O método procurar é o método principal do mecanismo de procura.
@@ -28,11 +28,11 @@ class MecanismoProcura(ABC):
     """
     def procurar(self, problema):
         
-        no = No(problema.estado_inicial)
-        self._fronteira.inserir(no)
         self._iniciar_memoria()
+        no = No(problema.estado_inicial)
+        self._memorizar(no)
         
-        while not self._fronteira.vazia():
+        while not self._fronteira.vazia:
 
             no = self._fronteira.remover()
 
@@ -40,7 +40,7 @@ class MecanismoProcura(ABC):
                 return Solucao(no)
             
             for no_sucessor in self._expandir(problema, no):
-                self._fronteira.inserir(no_sucessor)
+                self._memorizar(no_sucessor)
         
         return None
 

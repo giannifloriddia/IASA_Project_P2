@@ -10,18 +10,17 @@ class Fronteira(ABC):
 
     @property
     def vazia(self):
-        return self.__vazia
+        return len(self._nos) == 0
 
     def __init__(self):
-        self.__vazia = True
-        self._nos = []
+        self.iniciar()
 
     def iniciar(self):
-        pass
+        self._nos = []
 
     @abstractmethod
     def inserir(self, no):
-        pass
+        """ Insere um nó na fronteira. """
 
     def remover(self):
-        pass
+        return self._nos.pop(0)
