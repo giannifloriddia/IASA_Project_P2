@@ -12,6 +12,10 @@ class Operador(ABC):
         Aplica o estado atual a um novo estado. O novo estado é retornado.
         """
     
+    """
+    O custo é uma medida de quão caro é aplicar o operador e é usado
+    para avaliar a qualidade da solução encontrada.
+    """
     @abstractmethod
     def custo(self, estado, estado_suc):
         """

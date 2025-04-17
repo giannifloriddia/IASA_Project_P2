@@ -12,19 +12,25 @@ class MecanismoProcura(ABC):
     def __init__(self, fronteira):
         self._fronteira = fronteira
 
+    #Inicia a memória, ou seja, inicializa uma fronteira vazia.
     def _iniciar_memoria(self):
         self._fronteira.iniciar()
 
+    #Memoriza um nó é adicioná-lo à fronteira.
     def _memorizar(self, no):
         self._fronteira.inserir(no)
     
     """
     O método procurar é o método principal do mecanismo de procura.
     Ele recebe um problema e procura uma solução para esse problema.
+    Inicia a mémoria e cria um nó inicial a partir do estado inicial do problema,
+    e memoriza-o (adiciona-o à fronteira).
+    Enquanto a fronteira não estiver vazia, remove o nó inicial da fronteira
+    e guarda-o numa variável auxiliar.
     Procura um nó na fronteira que é o estado objetivo.
     Se o nó for o estado objetivo, retorna a solução.
-    Se não for, expande o nó e adiciona os nós sucessores à fronteira.
-    Se a fronteira estiver vazia, retorna None.
+    Se não for, expande o nó e adiciona os nós sucessores à fronteira (memoriza-os).
+    Se a fronteira estiver vazia, retorna None por defeito.
     """
     def procurar(self, problema):
         
@@ -42,8 +48,6 @@ class MecanismoProcura(ABC):
             for no_sucessor in self._expandir(problema, no):
                 self._memorizar(no_sucessor)
         
-        return None
-
     """
     O método expandir recebe um problema e um nó.
     Ele expande o nó e retorna uma lista de nós sucessores.
