@@ -9,6 +9,14 @@ Tem de ter métodos para iniciar a memória, memorizar nós e expandir nós.
 """
 class MecanismoProcura(ABC):
 
+    @property
+    def nos_processados(self):
+        return No.nos_criados
+
+    @property
+    def nos_em_memoria(self):
+        return No.nos_criados - No.nos_eliminados
+
     def __init__(self, fronteira):
         self._fronteira = fronteira
 
