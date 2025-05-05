@@ -1,6 +1,0 @@
-from .avaliador_heur import AvaliadorHeur
-
-class AvaliadorSorf(AvaliadorHeur):
-
-    def prioridade(self, no):
-        return self.heuristica(no.estado)

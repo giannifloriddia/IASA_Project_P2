@@ -25,3 +25,9 @@ class ProcuraProfLim(ProcuraProfundidade):
     """
     def _expandir(self, problema, no):
         return super()._expandir(problema, no) if no.profundidade < self._prof_max else []
+    
+    """
+    Alterei o método de representação da classe para facilidadede nos prints
+    """
+    def __repr__(self):
+        return "Procura em Profundidade Limitada"

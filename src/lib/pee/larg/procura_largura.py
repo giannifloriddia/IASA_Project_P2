@@ -23,3 +23,9 @@ class ProcuraLargura(MecanismoProcura):
 
     def __init__(self):
         super().__init__(FronteiraFIFO())
+
+    """
+    Alterei o método de representação da classe para facilidadede nos prints
+    """
+    def __repr__(self):
+        return "Procura em Largura"

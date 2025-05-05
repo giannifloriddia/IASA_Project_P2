@@ -9,10 +9,16 @@ Tem de ter métodos para iniciar a memória, memorizar nós e expandir nós.
 """
 class MecanismoProcura(ABC):
 
+    """
+    Os nós processados são os nós que foram criados, mas não foram eliminados.
+    """
     @property
     def nos_processados(self):
         return No.nos_criados
 
+    """
+    Os nós eliminados são os nós criados menos os nós eliminados.
+    """
     @property
     def nos_em_memoria(self):
         return No.nos_criados - No.nos_eliminados

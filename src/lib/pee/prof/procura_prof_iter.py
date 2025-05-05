@@ -35,3 +35,9 @@ class ProcuraProfIter(ProcuraProfLim):
             solucao = super().procurar(problema)
             if solucao:
                 return solucao
+    
+    """
+    Alterei o método de representação da classe para facilidadede nos prints
+    """
+    def __repr__(self):
+        return "Procura em Profundidade Iterativa"

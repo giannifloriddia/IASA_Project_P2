@@ -24,3 +24,9 @@ class ProcuraProfundidade(MecanismoProcura):
     
     def __init__(self):
         super().__init__(FronteiraLIFO())
+    
+    """
+    Alterei o método de representação da classe para facilidadede nos prints
+    """
+    def __repr__(self):
+        return "Procura em Profundidade"
