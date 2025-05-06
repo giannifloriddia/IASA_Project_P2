@@ -29,6 +29,7 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
     def __init__(self, avaliador):
         fronteira = FronteiraPrioridade(avaliador)
         self._avaliador = avaliador
+        self.contador = 0
         super().__init__(fronteira)
 
     """
@@ -38,4 +39,8 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
     ele deve ser mantido na fronteira.
     """
     def _manter(self, no):
-        return no.estado not in self._explorados or no.custo < self._explorados[no.estado].custo
+        verificar = no.estado not in self._explorados or no.custo < self._explorados[no.estado].custo
+        #Adicionado pela indicação do professor
+        if not verificar:
+            self.contador += 1
+        return verificar

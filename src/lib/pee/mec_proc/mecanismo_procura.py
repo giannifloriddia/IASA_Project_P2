@@ -17,11 +17,11 @@ class MecanismoProcura(ABC):
         return No.nos_criados
 
     """
-    Os nós eliminados são os nós criados menos os nós eliminados.
+    Os nós em memória são os nós máximos em memória.
     """
     @property
     def nos_em_memoria(self):
-        return No.nos_criados - No.nos_eliminados
+        return No.nos_max_em_memoria
 
     def __init__(self, fronteira):
         self._fronteira = fronteira

@@ -13,6 +13,7 @@ class No:
     """
     nos_criados = 0
     nos_eliminados = 0
+    nos_max_em_memoria = 0
     
     """
     Propriedades para os atributos profundidade, custo, estado, operador,
@@ -78,9 +79,15 @@ class No:
             self.__profundidade = 0
             No.nos_criados = 0
             No.nos_eliminados = 0
+            No.nos_max_em_memoria = 0
         else:
             self.__profundidade = antecessor.profundidade + 1
         No.nos_criados += 1 #Quando um nó é criado, o número de nós criados é incrementado
+        # Calcula o número atual de nós em memória (criados menos eliminados)
+        n_nos_em_mem = No.nos_criados - No.nos_eliminados
+        # Atualiza o contador de máximo de nós em memória se o número atual for maior
+        if n_nos_em_mem > No.nos_max_em_memoria:
+            No.nos_max_em_memoria = n_nos_em_mem            
         self.__prioridade = None
 
     """

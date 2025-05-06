@@ -39,7 +39,7 @@ def print_solution(mecanismo_proc):
         print("-> Custo:", solucao_atual.custo, "\n")
 
         print("->Nº nós processados:", mecanismo_proc.nos_processados)
-        print("->Nº nós em memória:", mecanismo_proc.nos_em_memoria, "\n")
+        print("->Nº nós máx em memória:", mecanismo_proc.nos_em_memoria, "\n")        
 
         print("Passos:")
         for passo in solucao_atual:
@@ -101,5 +101,20 @@ print("A procura A* junta o melhor da custo uniforme e da sofrega: considera o c
 "(101 vs 126). Em troca, usou um pouco mais de memória (81 nós), " \
 "mas de forma eficiente.")
 
-#Peço desculpa pela entrega anterior, tive uns problemas pessoais nesse dia e não estava concentrado.
+#Testar com novos parâmetros
+valor_inicial = 0
+valor_final = 9
+incrementos = [1, 2, -1]
 
+# Criamo o problema e a heurística, e escolhemos um mecanismo de procura
+problema = ProblemaContagem(valor_inicial, valor_final, incrementos)
+heuristica = HeuristicaContagem(valor_final)
+
+mecanismos = [ProcuraLargura(), ProcuraProfLim(5), ProcuraProfIter(5), ProcuraCustoUnif(), ProcuraSofrega(), ProcuraAA() ]
+
+print("\n-------------------|Novo problema|-------------------")
+for mecanismo in mecanismos:
+    print_solution(mecanismo)
+    if mecanismo in mecanismos[3:]:
+        print("Nº de nós repetidos:", mecanismo.contador)
+print("Verificamos que todos os mecanismos estão a funcionar como o esperado")
