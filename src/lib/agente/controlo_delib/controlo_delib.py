@@ -1,14 +1,19 @@
-from agente.controlo_delib.mec_delib import MecDelib
-from agente.controlo_delib.modelo.modelo_mundo import ModeloMundo
+from ..controlo_delib.mec_delib import MecDelib
+from ..controlo_delib.modelo.modelo_mundo import ModeloMundo
 
 """
-O controlo deliberativo, serve para decidir o que fazer, ou seja, o processo de deliberação. 
+O controlo deliberativo, serve para decidir o que fazer, ou seja, 
+o processo de deliberação. 
 Dada uma perceção do ambiente, o componente ControloDelib tem a 
-responsabilidade de processá-la, assimilá-la, e, crucialmente, deliberar para 
-gerar um plano que culmina numa ação a ser executada.
+responsabilidade de processá-la e decidir a ação a ser executada.
 """
 class ControloDelib:
     
+    """
+    Inicializa o modelo do mundo e o mecanismo de deliberação,
+    para além de receber o planeador e inicializar um lista de
+    objetivos e um plano.
+    """
     def __init__(self, planeador):
         self.__modeloMundo = ModeloMundo()
         self.__mec_del = MecDelib(self.__modeloMundo)
@@ -19,6 +24,7 @@ class ControloDelib:
     """
     O método processar serve para processar a perceção do ambiente,
     Primeiro assimila-a, e, se tiver de reconsiderar, delibera e planeia.
+    Por fim, executa a ação correspondente ao plano.
     """
     def processar(self, percecao):
         self.__assimilar(percecao)
@@ -26,7 +32,6 @@ class ControloDelib:
             self.__deliberar()
             self.__planear()
         return self.__executar()
-        """return acao"""
 
     """
     Assimilar é o processo de atualizar o modelo do mundo com a perceção recebida.
@@ -40,15 +45,12 @@ class ControloDelib:
     """
     def __reconsiderar(self):
         return (self.__modeloMundo.alterado) or (not self.__plano is None)
-        """return boolean"""
 
     """
     Delibera os objetivos a serem alcançados
     """
     def __deliberar(self):
-        self.__objetivos = self.__mec_del.deliberar
-        #return self.__objetivos
-        """return void"""
+        self.__objetivos = self.__mec_del.deliberar()
 
     """
     Planeia como alcançar os objetivos, se houver algum, através do planeador.
@@ -58,7 +60,6 @@ class ControloDelib:
             self.__plano = self.__planeador.planear(self.__modeloMundo, self.__objetivos)
         else:
             self.__plano = None
-        """return void"""
 
     """
     Executa a ação do plano, se houver algum. Se não houver plano, retorna None.
@@ -73,7 +74,6 @@ class ControloDelib:
                 return operador.acao
             else:
                 self.__plano = None
-        """return acao"""
     
     """
     Método para mostrar o modelo do mundo e os objetivos no ambiente.
@@ -87,5 +87,3 @@ class ControloDelib:
         if self.__objetivos:
             for objetivo in self.__objetivos:
                 vista.marcar_posicao(objetivo.posicao)
-
-        """return void"""

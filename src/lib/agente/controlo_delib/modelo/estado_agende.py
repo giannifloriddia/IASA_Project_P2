@@ -10,9 +10,13 @@ class EstadoAgende(Estado):
     def posicao(self):
         return self.__posicao
 
+    #Inicializa a posição
     def __init__(self, posicao):
         self.__posicao = posicao
 
-    #Assim?
+    """
+    Dá um id ao valor com o método que redefinimos
+    na classe de Estado.
+    """
     def id_valor(self):
-        return self._posicao.__hash__()
+        return self.__hash__()

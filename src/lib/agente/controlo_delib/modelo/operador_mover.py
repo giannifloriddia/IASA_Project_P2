@@ -1,3 +1,9 @@
+"""
+O operador de mover é responsável por mover o agente numa direção específica
+no ambiente. Ele utiliza o modelo do mundo para determinar a nova posição do agente
+e verificar se a ação é válida.
+Define a transforamação (transição de estado) e o custo da ação.
+"""
 class OperadorMover:
 
     @property
@@ -8,7 +14,7 @@ class OperadorMover:
     def acao(self):
         return self.__acao
     
-    def __inti__(self, modelo_mundo, direcao):
+    def __init__(self, modelo_mundo, direcao):
         self.__modelo_mundo = modelo_mundo
         self.__direcao = direcao
 

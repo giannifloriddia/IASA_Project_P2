@@ -116,5 +116,5 @@ print("\n-------------------|Novo problema|-------------------")
 for mecanismo in mecanismos:
     print_solution(mecanismo)
     if mecanismo in mecanismos[3:]:
-        print("Nº de nós repetidos:", mecanismo.contador)
+        print("Nº de estados repetidos:", mecanismo.contador)
 print("Verificamos que todos os mecanismos estão a funcionar como o esperado")

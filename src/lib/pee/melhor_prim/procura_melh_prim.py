@@ -42,5 +42,6 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
         verificar = no.estado not in self._explorados or no.custo < self._explorados[no.estado].custo
         #Adicionado pela indicação do professor
         if not verificar:
+            #Conta o número de nós/estados repetidos
             self.contador += 1
         return verificar

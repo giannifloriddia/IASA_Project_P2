@@ -9,10 +9,16 @@ A classe ModeloMundo representa o modelo do mundo do agente.
 """
 class ModeloMundo:
     
+    """
+    Propriedade que retorna se o modelo do mundo foi alterado.
+    """
     @property
     def alterado(self):
         return self.__alterado
     
+    """
+    Propriedade que retorna o dicionário de elementos do modelo do mundo.
+    """
     @property
     def elementos(self):
         return self.__elementos
@@ -25,7 +31,7 @@ class ModeloMundo:
         self.__alterado = False
 
     #metodo para facilitar a escrita (if estado in (instancia do mundo))
-    #implemenação do operador in
+    #implementação do operador in
     def __contains__(self, estado):
         return estado in self._estados
     
@@ -41,9 +47,18 @@ class ModeloMundo:
     def obter_elemento(self, estado):
         return self.__elementos.get(estado.posicao) #retorna none para não dar exceção se não existir o estado (default value)
 
+    """
+    Define a distância entre dois estados.
+    """
     def distacia(self, estado):
         return math.dist(estado.posicao, self.__estado.posicao)
 
+    """
+    Atualiza o modelo do mundo com a perceção recebida.
+    O método atualiza o estado atual do agente e verifica se houve alteração
+    nos elementos do ambiente. Se houve alteração, atualiza a lista de elementos
+    e atualiza a lista de estados de acordo com a perceção recebida 
+    """
     def atualizar(self, percecao):
         self.__estado = EstadoAgende(percecao.posicao)
         self.__alterado = self.__elementos != percecao.elementos
