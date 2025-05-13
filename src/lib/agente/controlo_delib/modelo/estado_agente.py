@@ -4,7 +4,7 @@ from mod.estado import Estado
 """
 EstadoAgente representa o estado de um agente no ambiente.
 """
-class EstadoAgende(Estado):
+class EstadoAgente(Estado):
 
     @property
     def posicao(self):
@@ -14,9 +14,5 @@ class EstadoAgende(Estado):
     def __init__(self, posicao):
         self.__posicao = posicao
 
-    """
-    Dá um id ao valor com o método que redefinimos
-    na classe de Estado.
-    """
     def id_valor(self):
-        return self.__hash__()
+        return hash(self.__posicao)

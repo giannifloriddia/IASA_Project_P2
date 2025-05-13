@@ -28,7 +28,7 @@ class ControloDelib:
     """
     def processar(self, percecao):
         self.__assimilar(percecao)
-        if self.__reconsiderar(percecao):
+        if self.__reconsiderar():
             self.__deliberar()
             self.__planear()
         return self.__executar()

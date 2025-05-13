@@ -1,5 +1,6 @@
-from agente.controlo_delib.modelo.estado_agende import EstadoAgende
+from agente.controlo_delib.modelo.estado_agente import EstadoAgente
 from agente.controlo_delib.modelo.operador_mover import OperadorMover
+from plan.modelo.modelo_plan import ModeloPlan
 from sae.ambiente.direccao import Direccao
 from sae.ambiente.elemento import Elemento
 import math
@@ -7,7 +8,7 @@ import math
 """
 A classe ModeloMundo representa o modelo do mundo do agente.
 """
-class ModeloMundo:
+class ModeloMundo(ModeloPlan):
     
     """
     Propriedade que retorna se o modelo do mundo foi alterado.
@@ -33,7 +34,7 @@ class ModeloMundo:
     #metodo para facilitar a escrita (if estado in (instancia do mundo))
     #implementação do operador in
     def __contains__(self, estado):
-        return estado in self._estados
+        return estado in self.__estados
     
     def obter_estado(self):
         return self.__estado
@@ -50,7 +51,7 @@ class ModeloMundo:
     """
     Define a distância entre dois estados.
     """
-    def distacia(self, estado):
+    def distancia(self, estado):
         return math.dist(estado.posicao, self.__estado.posicao)
 
     """
@@ -60,11 +61,11 @@ class ModeloMundo:
     e atualiza a lista de estados de acordo com a perceção recebida 
     """
     def atualizar(self, percecao):
-        self.__estado = EstadoAgende(percecao.posicao)
+        self.__estado = EstadoAgente(percecao.posicao)
         self.__alterado = self.__elementos != percecao.elementos
         if self.__alterado:
             self.__elementos = percecao.elementos
-            self.__estados = [EstadoAgende(posicao) for posicao in percecao.posicoes]
+            self.__estados = [EstadoAgente(posicao) for posicao in percecao.posicoes]
 
     def mostrar(self, vista):
         #tuplos de estados e elementos
