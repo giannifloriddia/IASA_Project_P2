@@ -1,6 +1,4 @@
 from mod.estado import Estado
-#CLASSE É PARA FICAR AQUI MESMO, MAS O NOME É PARA SER ALTERADO
-
 """
 EstadoAgente representa o estado de um agente no ambiente.
 """
@@ -14,5 +12,8 @@ class EstadoAgente(Estado):
     def __init__(self, posicao):
         self.__posicao = posicao
 
+    """
+    O id é o hash da posição do agente.
+    """
     def id_valor(self):
         return hash(self.__posicao)

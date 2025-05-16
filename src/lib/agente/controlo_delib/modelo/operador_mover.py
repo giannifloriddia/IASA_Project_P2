@@ -11,19 +11,34 @@ Define a transforamação (transição de estado) e o custo da ação.
 """
 class OperadorMover(Operador):
 
+    """
+    Propriedade que retorna o angulo utilizado na ação.
+    """
     @property
     def ang(self):
         return self.__ang
     
+    """
+    Propriedade que retorna a ação a realizar.
+    """
     @property
     def acao(self):
         return self.__acao
     
+    """
+    Inicializa o operador de mover com o modelo do mundo,
+    o ângulo e a ação com a direção especificada.
+    """
     def __init__(self, modelo_mundo, direcao):
         self.__modelo_mundo = modelo_mundo
         self.__ang = direcao.value
         self.__acao = Accao(direcao) #ou direccao = direcao
 
+    """
+    Aplica o operador ao estado atual do agente, calculando a nova posição
+    com base na ação e no ângulo. Cria um novo estado com a nova posição e verifica
+    se o novo estado existe no modelo do mundo. Se existir, retorna o novo estado.
+    """
     def aplicar(self, estado):
         nova_posicao = self.__translacao(estado.posicao, self.__acao.passo, self.__ang)
         novo_estado = EstadoAgente(nova_posicao)
@@ -37,6 +52,14 @@ class OperadorMover(Operador):
     def custo(self, estado, estado_suc):
         return max(1, math.dist(estado.posicao, estado_suc.posicao))
 
+    """
+    A translação calcula a nova posição do agente, para a calcular,
+    realizamos as operações de deslocamento em x e y, utilizando a distância
+    e o ângulo da ação.
+    O valor de y é negativo porque o eixo y do ambiente SAE
+    é invertido em relação ao eixo y do plano cartesiano.
+    Slide 5 do P4.
+    """
     def __translacao(self, posicao, distancia_desl, ang_desl):
         #desestruturação de objetos
         x, y = posicao

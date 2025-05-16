@@ -22,6 +22,10 @@ As variantes principais da procura melhor-primeiro são:
 """
 class ProcuraMelhorPrim(ProcuraGrafo, ABC):
 
+    @property
+    def estados_repetidos(self):
+        return self.__n_estados_rep
+
     """
     Tem uma fronteira de prioridade, é inicializado o avaliador,
     e é chamado o superconstrutor da classe ProcuraGrafo com a fronteira de prioridade.
@@ -29,7 +33,7 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
     def __init__(self, avaliador):
         fronteira = FronteiraPrioridade(avaliador)
         self._avaliador = avaliador
-        self.contador = 0
+        self.__n_estados_rep = 0
         super().__init__(fronteira)
 
     """
@@ -43,5 +47,5 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
         #Adicionado pela indicação do professor
         if not verificar:
             #Conta o número de nós/estados repetidos
-            self.contador += 1
+            self.__n_estados_rep += 1
         return verificar

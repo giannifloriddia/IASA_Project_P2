@@ -76,13 +76,13 @@ print_solution(ProcuraProfIter())
 print("A procura em profundidade iterativa combina o baixo uso de memória da procura " \
 "em profundidade com a completude da procura em largura. Vai aumentando o limite de " \
 "profundidade aos poucos, repetindo a busca. Aqui, encontrou a mesma solução que a largura, " \
-"com custo 187, mas processando muito menos nós (26 vs 216) e com menos memória (12 vs 216). " \
+"com custo 187, mas processando muito menos nós (26 vs 216) e com menos memória (17 vs 216). " \
 "Ainda assim, tal como as anteriores, ignora os custos dos caminhos, por isso também não encontrou a solução ótima.")
 
 print_solution(ProcuraCustoUnif())
 print("Ao contrário das outras procuras, a custo uniforme considera os custos dos ramos e garante " \
 "sempre a solução ótima. Neste caso, encontrou o caminho com custo 20, muito melhor que os 100 ou 187 " \
-"das outras abordagens. No entanto, processou 126 nós e manteve 76 em memória, o que é mais do que a " \
+"das outras abordagens. No entanto, processou 126 nós e manteve 86 em memória, o que é mais do que a " \
 "profundidade mas menos que a largura. Ou seja, é mais eficiente em termos de custo, mas pode ser mais " \
 "pesada dependendo do problema, é ideal quando o custo importa mesmo.")
 
@@ -90,7 +90,7 @@ print_solution(ProcuraSofrega())
 print("A procura sofrega usa uma heurística para escolher o próximo nó, " \
 "tentando chegar rapidamente ao objetivo. No entanto, só olha para a estimativa até ao objetivo e " \
 "ignora o custo acumulado, o que pode levar a escolhas pouco eficientes. " \
-"Aqui, apesar de ter usado menos memória (17 nós) e processado apenas 21, acabou com um custo bem mais " \
+"Aqui, apesar de ter usado menos memória (19 nós) e processado apenas 21, acabou com um custo bem mais " \
 "alto (164). Foi mais rápida, mas neste caso ficou longe de ser ótima — mostra " \
 "o risco de seguir apenas a heurística sem considerar os custos reais.")
 
@@ -98,7 +98,7 @@ print_solution(ProcuraAA())
 print("A procura A* junta o melhor da custo uniforme e da sofrega: considera o custo acumulado " \
 "como a custo uniforme, e também usa uma heurística como a sofrega. Por isso, consegue encontrar a " \
 "solução ótima, como se vê aqui com o custo 20.0, igual ao da custo uniforme, mas com menos nós processados "
-"(101 vs 126). Em troca, usou um pouco mais de memória (81 nós), " \
+"(101 vs 126). Em troca, usou um pouco mais de memória (83 nós), " \
 "mas de forma eficiente.")
 
 #Testar com novos parâmetros
@@ -116,5 +116,5 @@ print("\n-------------------|Novo problema|-------------------")
 for mecanismo in mecanismos:
     print_solution(mecanismo)
     if mecanismo in mecanismos[3:]:
-        print("Nº de estados repetidos:", mecanismo.contador)
+        print("Nº de estados repetidos:", mecanismo.estados_repetidos)
 print("Verificamos que todos os mecanismos estão a funcionar como o esperado")

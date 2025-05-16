@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from plan.planeador import Planeador
 
+#Interface para o modelo de planejamento
 class ModeloPlan(ABC):
 
     @abstractmethod

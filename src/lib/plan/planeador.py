@@ -1,9 +1,13 @@
 from abc import ABC, abstractmethod
-
+"""
+Interface para o planeador
+O Planeador é responsável por gerar planos 
+a partir de um modelo de planejamento e objetivos.
+"""
 class Planeador(ABC):
     
     @abstractmethod
     def planear(self, modelo_plan, objetivos):
         """
-        Planeia um plano para o modelo_plan com base nos objetivos fornecidos.
+        Retorna um plano
         """

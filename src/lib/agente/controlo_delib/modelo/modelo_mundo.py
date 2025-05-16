@@ -28,7 +28,8 @@ class ModeloMundo(ModeloPlan):
         self.__estado = None
         self.__estados = []
         self.__elementos = {}
-        self.__operadores = [OperadorMover(self, direcao) for direcao in Direccao] #passar o proprio valor ModeloMundo (self)
+        #passa o proprio valor ModeloMundo (self) e cada diração em Direccao
+        self.__operadores = [OperadorMover(self, direcao) for direcao in Direccao]
         self.__alterado = False
 
     #metodo para facilitar a escrita (if estado in (instancia do mundo))
@@ -36,9 +37,11 @@ class ModeloMundo(ModeloPlan):
     def __contains__(self, estado):
         return estado in self.__estados
     
+    #obter estado atual
     def obter_estado(self):
         return self.__estado
 
+    #obter estados do modelo
     def obter_estados(self):
         return self.__estados
 
@@ -67,6 +70,10 @@ class ModeloMundo(ModeloPlan):
             self.__elementos = percecao.elementos
             self.__estados = [EstadoAgente(posicao) for posicao in percecao.posicoes]
 
+    """
+    Mostra a vista do modelo do mundo utilizando
+    funções da classe vista da SAE.
+    """
     def mostrar(self, vista):
         #tuplos de estados e elementos
         #primeiro elemento chave, segundo valor

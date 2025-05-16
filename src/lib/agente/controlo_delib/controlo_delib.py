@@ -41,10 +41,10 @@ class ControloDelib:
         """return void"""
 
     """
-    O método reconsidera, se o modelo do mundo foi alterado ou se o plano não é nulo.
+    O método reconsidera, se o modelo do mundo foi alterado ou se o plano é nulo.
     """
     def __reconsiderar(self):
-        return (self.__modeloMundo.alterado) or (not self.__plano is None)
+        return (self.__modeloMundo.alterado) or (self.__plano is None)
 
     """
     Delibera os objetivos a serem alcançados
@@ -76,8 +76,7 @@ class ControloDelib:
                 self.__plano = None
     
     """
-    Método para mostrar o modelo do mundo e os objetivos no ambiente.
-    O método mostra o modelo do mundo e, se houver plano, mostra o plano.
+    Método para mostrar a vista com o modelo do mundo e o plano a ser executado no ambiente.
     """
     def mostrar(self, vista): #público (diferente da arquitetura)
         vista.limpar()
