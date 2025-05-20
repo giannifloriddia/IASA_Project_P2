@@ -2,6 +2,7 @@ from modelo.heuristica_contagem import HeuristicaContagem
 from modelo.problema_contagem import ProblemaContagem
 from pee.melhor_prim.procura_custo_unif import ProcuraCustoUnif
 from pee.melhor_prim.procura_aa import ProcuraAA
+from pee.melhor_prim.procura_melh_prim import ProcuraMelhorPrim
 from pee.melhor_prim.procura_sofrega import ProcuraSofrega
 from pee.prof.procura_profundidade import ProcuraProfundidade
 from pee.larg.procura_largura import ProcuraLargura
@@ -19,7 +20,7 @@ valor_inicial = 0
 valor_final = 20
 incrementos = [5, 1, 9, 4, 5]
 
-# Criamo o problema e a heurística, e escolhemos um mecanismo de procura
+#Criamos o problema e a heurística, e escolhemos um mecanismo de procura
 problema = ProblemaContagem(valor_inicial, valor_final, incrementos)
 heuristica = HeuristicaContagem(valor_final)
 
@@ -106,15 +107,15 @@ valor_inicial = 0
 valor_final = 9
 incrementos = [1, 2, -1]
 
-# Criamo o problema e a heurística, e escolhemos um mecanismo de procura
+#Criamos o problema e a heurística, e escolhemos um mecanismo de procura
 problema = ProblemaContagem(valor_inicial, valor_final, incrementos)
 heuristica = HeuristicaContagem(valor_final)
 
-mecanismos = [ProcuraLargura(), ProcuraProfLim(5), ProcuraProfIter(5), ProcuraCustoUnif(), ProcuraSofrega(), ProcuraAA() ]
+mecanismos = [ProcuraLargura(), ProcuraProfLim(5), ProcuraProfIter(5), ProcuraCustoUnif(), ProcuraSofrega(), ProcuraAA()]
 
 print("\n-------------------|Novo problema|-------------------")
 for mecanismo in mecanismos:
     print_solution(mecanismo)
-    if mecanismo in mecanismos[3:]:
+    if isinstance(mecanismo, ProcuraMelhorPrim):
         print("Nº de estados repetidos:", mecanismo.estados_repetidos)
 print("Verificamos que todos os mecanismos estão a funcionar como o esperado")
