@@ -1,14 +1,20 @@
 from .modelo.modelo_pdm import ModeloPDM
 
 """
-Criamos um modelo de PDM para o ambiente 7x1
+Criamos um modelo de PDM para o ambiente 7x1,
 detalhado no pdf 15-pds-exemplo
+Em que temos um array com 7 estados,
+e duas ações possíveis: '<' e '>',
+consideramos os estados 1 e 7 como estados terminais.
 """
 class ModeloAmbiente7x1(ModeloPDM):
 
     def __init__(self):
+        #conjunto de estados do mundo
         self.__S = [1, 2, 3, 4, 5, 6, 7]
+        #acões possíveis no estado s
         self.__A = ['<', '>']
+        #probabilidades de transição de um estado aplicando uma ação
         self.__T = {
             (1, '<', 1): 0,
             (1, '>', 2): 0,
@@ -25,6 +31,7 @@ class ModeloAmbiente7x1(ModeloPDM):
             (7, '<', 6): 0,
             (7, '>', 7): 0
         }
+        #recompensa esperada na transição de um estado aplicando uma ação
         self.__R = {
             (1, '<', 1): 0,
             (1, '>', 2): 0,

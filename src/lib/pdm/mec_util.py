@@ -12,11 +12,29 @@ class MecUtil:
         self.__gama = gama
 
     """
-    Calculamos a utilidade de um estado de acordo
-    com o que estudamos, utilizando um delta máximo
-    para parar o ciclo.
+    A utilidade U(s) representa o valor esperado de estar num estado s, 
+    assumindo que se segue uma política de ações. Esta utilidade reflete 
+    os ganhos acumulados ao longo do tempo, ou seja, a soma das recompensas 
+    futuras ao seguir uma determinada sequência de decisões. Para evitar que 
+    esta soma seja infinita, usa-se um fator de desconto gama entre [0,1], 
+    que dá mais peso às recompensas imediatas e menos às futuras, resultando 
+    numa utilidade descontada.
+
+    O uso do fator de desconto resolve dois problemas: impede que a utilidade cresça 
+    indefinidamente em ciclos positivos e assegura que recompensas mais próximas no 
+    tempo sejam mais valiosas, refletindo decisões mais realistas.
+
+    Para o cálculo da utilidade ótima, utilizamos o método de iteração de valores,
+    que é um processo iterativo onde a utilidade de cada estado é atualizada
+    repetidamente até que a diferença entre iterações sucessivas seja menor
+    que um valor de tolerância (delta_max). Este método é eficiente para
+    encontrar a utilidade mesmo em ambientes complexos.
     """
     def utilidade(self):
+        """
+        Fazemos uma atribuição por referência,
+        
+        """
         S, A = self.__modelo.S, self.__modelo.A
         U = {s: 0 for s in S()}
         while True:
@@ -30,11 +48,10 @@ class MecUtil:
         return U
 
     """
-    A utilidade da acção é calculada
-    através da soma dos produtos
-    entre a probabilidade de transição,
-    a recompensa esperada e a utilidade
-    do estado sucessor.
+    Esta função aplica a equação de Bellman para calcular o valor 
+    de uma ação num determinado estado, ponderando as probabilidades 
+    de transição, as recompensas imediatas, e a utilidade futura 
+    descontada dos estados seguintes. 
     """
     def util_acao(self, s, a, U):
         T, R, suc = self.__modelo.T, self.__modelo.R, self.__modelo.suc
