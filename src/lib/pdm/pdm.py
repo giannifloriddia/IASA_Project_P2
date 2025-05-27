@@ -1,5 +1,10 @@
-from pdm.mec_util import MecUtil
+from .mec_util import MecUtil
 
+"""
+Classe PDM (Processo de Decisão de Markov),
+onde podemos calcular a política ótima e 
+utilidade de um modelo de PDM.
+"""
 class PDM:
 
     """
@@ -11,8 +16,12 @@ class PDM:
         self.__mec_util = MecUtil(modelo, gama, delta_max)
 
     """
+    A política representa a estratégia ótima de 
+    decisão de um agente num ambiente, ou seja, 
+    indica qual a melhor ação a tomar em cada estado, 
+    com base nas utilidades calculadas.
     A política é calculada através da maximização
-    da utilidade de cada acção em cada estado.
+    da utilidade de cada ação em cada estado.
     """
     def politica(self, utilidade):
         S, A, util_acao = self.__modelo.S, self.__modelo.A, self.__mec_util.util_acao

@@ -1,7 +1,7 @@
 """
 O mecanismo de utililidade serve somente
-para calcular matematicamente a utilidade de um estado
-e de uma ação.
+para calcular matematicamente a utilidade dos
+estados e de uma ação.
 """
 class MecUtil:
 
@@ -33,7 +33,7 @@ class MecUtil:
     def utilidade(self):
         """
         Fazemos uma atribuição por referência,
-        
+        para podermos simplificar o código.
         """
         S, A = self.__modelo.S, self.__modelo.A
         U = {s: 0 for s in S()}
@@ -43,7 +43,7 @@ class MecUtil:
             for s in S():
                 U[s] = max([self.util_acao(s, a, Uant) for a in A(s)], default=0)
                 delta = max(delta, abs(U[s] - Uant[s]))
-            if delta < self.__delta_max:
+            if delta <= self.__delta_max:
                 break
         return U
 

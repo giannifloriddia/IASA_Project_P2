@@ -1,4 +1,5 @@
-from .modelo.modelo_pdm import ModeloPDM
+from lib.pdm.pdm import PDM
+from lib.pdm.modelo.modelo_pdm import ModeloPDM
 
 """
 Criamos um modelo de PDM para o ambiente 7x1,
@@ -48,20 +49,49 @@ class ModeloAmbiente7x1(ModeloPDM):
             (7, '<', 6): 0,
             (7, '>', 7): 0
         }
+        #Transições possíveis
+        self.__transicoes = {
+            (s, a): sn
+            for (s, a, sn) in self.__T
+            if s not in [1, 7]
+            #estado, acao : estados seguintes na chave do dicionario de t
+            #se o estado atual não for terminal
+        }
 
+    # Retorna o conjunto de estados do mundo
     def S(self):
         return self.__S
 
+    """
+    Retorna uma lista vazia se o estado for terminal,
+    ou a lista de ações possíveis se não for
+    """
     def A(self, s):
-        return self.__A
+        return self.__A if s not in [1, 7] else []
 
+    #Retorna a probabilidade de transição de um estado s para sn através da ação a
     def T(self, s, a, sn):
         return self.__T.get((s, a, sn))
 
+    #Retorna a recompensa esperada na transição de um estado s para sn através da ação a
     def R(self, s, a, sn):
         return self.__R.get((s, a, sn))
 
+    """
+    Gera o estado sucessor que resulta de aplicar a acção a no estado s
+    """
     def suc(self, s, a):
-        """
-        Gera o estado sucessor que resulta de aplicar a acção a no estado s
-        """
+        if (s, a) in self.__transicoes: # verifica se a transição existe
+            sn = self.__transicoes.get((s, a)) #get para retornar None em vez de exceção
+        return [sn] if sn else []
+    
+if __name__ == "__main__":
+    """
+    Testamos o PDM com o modelo do ambiente 7x1.
+    O resultado esperado dá como esperado.
+    """
+    modelo = ModeloAmbiente7x1()
+    pdm = PDM(modelo, 0.5, 0.0)
+    utilidade, politica = pdm.resolver()
+    print("\nUtilidade:", utilidade)
+    print("\nPolítica:", politica, "\n")
