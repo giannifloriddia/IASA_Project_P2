@@ -29,6 +29,9 @@ class MecUtil:
     repetidamente até que a diferença entre iterações sucessivas seja menor
     que um valor de tolerância (delta_max). Este método é eficiente para
     encontrar a utilidade mesmo em ambientes complexos.
+
+    Utilizamos uma função iterativa em vez de uma recursiva pois é muito mais eficiente
+    em termos de memória e desempenho, especialmente em ambientes com muitos estados e ações.
     """
     def utilidade(self):
         """

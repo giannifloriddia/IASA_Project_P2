@@ -18,6 +18,9 @@ class MecDelib:
     """
     def deliberar(self):
         objetivos = self.__gerar_objetivos()
+        #Não funcionou
+        #self.estado_inicial = self.__modelo_mundo.obter_estado()
+        #objetivos.append(self.estado_inicial)
         if objetivos:
             return self.__selecionar_objetivos(objetivos)
 
