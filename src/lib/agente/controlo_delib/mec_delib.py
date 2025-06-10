@@ -11,6 +11,7 @@ class MecDelib:
     #Inicializa o modelo do mundo
     def __init__(self, modelo_mundo):
         self.__modelo_mundo = modelo_mundo
+        self.__estado_inicial = None
 
     """
     Deliberar é gerar e selecionar os objetivos a serem alcançados pelo agente.
@@ -18,11 +19,12 @@ class MecDelib:
     """
     def deliberar(self):
         objetivos = self.__gerar_objetivos()
-        #Não funcionou
-        #self.estado_inicial = self.__modelo_mundo.obter_estado()
-        #objetivos.append(self.estado_inicial)
+        if self.__estado_inicial is None:
+            self.__estado_inicial = self.__modelo_mundo.obter_estado()
         if objetivos:
             return self.__selecionar_objetivos(objetivos)
+        else:
+            return [self.__estado_inicial]
 
     """
     Este método é um gerador, ou seja, ele gera uma lista de estados, que representam
